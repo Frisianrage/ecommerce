@@ -1,24 +1,27 @@
 import React, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
+import {useDispatch, useSelector} from 'react-redux'
 import {Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap'
-import axios from 'axios'
 import Rating from '../components/Rating'
+import Loader from '../components/Loader'
+import Message from '../components/Message'
+import {listProductDetails} from '../actions/productActions'
 
 const Productscreen = ({match}) => {
-    const [product, setProduct] = useState({})
+    const dispatch = useDispatch()
+
+    const productDetails = useSelector(state => state.productDetails)
+    const {loading, error, product} = productDetails
 
     useEffect(() => {
-        const fetchProduct = async () => {
-            const {data} = await axios.get(`/api/products/${match.params.id}`)
-            setProduct(data)
-        }
-        fetchProduct()
-    }, [])
+        dispatch(listProductDetails(match.params.id))
+    }, [dispatch, match])
 
     return (
         <>
         <Link className='btn btn-dark my3' to='/'>Go Back</Link>
-        <Row>
+        {loading ? <Loader /> : error ? (<Message varaint='danger'>{error}</Message>) : (
+            <Row>
             <Col md={6}>
                 <Image src={product.image} alt={product.name} fluid/>
             </Col>
@@ -31,7 +34,7 @@ const Productscreen = ({match}) => {
                         <Rating value={product.rating} text={`${product.numReviews} reviews`} /> 
                     </ListGroup.Item>
                     <ListGroup.Item>
-                        Price: ${product.price}
+                        Price: $ {product.price}
                     </ListGroup.Item>
                     <ListGroup.Item>
                         Description: {product.description}
@@ -47,7 +50,7 @@ const Productscreen = ({match}) => {
                                     Price:
                                 </Col>
                                 <Col>
-                                    <strong>{product.price}</strong>
+                                    <strong>$ {product.price}</strong>
                                 </Col>
                             </Row>
                         </ListGroup.Item>
@@ -68,6 +71,8 @@ const Productscreen = ({match}) => {
                 </Card>
             </Col>
         </Row>
+        )}
+        
         </>
     )
 }
