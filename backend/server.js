@@ -12,14 +12,17 @@ connectDB()
 
 const app = express();
 const PORT = process.env.PORT || 5000
+
 app.use(express.json())
+
+
 app.get('/', (req, res) => {res.send('APP is running')})
 
 app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
 
-
 app.use(notFound)
 app.use(errorHandler)
+
 
 app.listen(PORT, console.log(`Server is running on port ${PORT}`.yellow.bold))
