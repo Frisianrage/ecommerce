@@ -10,7 +10,10 @@ import ProfileScreen from './screens/ProfileScreen'
 import ShippingScreen from './screens/ShippingScreen'
 import PaymentScreen from './screens/PaymentScreen'
 import PlaceOrderScreen from './screens/PlaceOrderScreen'
+import ProductListScreen from './screens/ProductListScreen'
 import OrderScreen from './screens/OrderScreen'
+import UserListScreen from './screens/UserListScreen'
+import UserEditScreen from './screens/UserEditScreen'
 import {Container} from 'react-bootstrap'
 
 
@@ -29,6 +32,9 @@ const App = () => {
         <Route path='/profile' component={ProfileScreen} />
         <Route path='/login' component={LoginScreen} />
         <Route path='/register' component={RegisterScreen} exact />
+        <Route path='/admin/userlist' component={UserListScreen} exact />
+        <Route path='/admin/productlist' component={ProductListScreen} exact />
+        <Route path='/admin/user/:id/edit' component={UserEditScreen} exact />
         <Route path='/' component={HomeScreen} exact />
         </Container>
       </main>
