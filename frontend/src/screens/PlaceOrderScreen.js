@@ -26,12 +26,6 @@ const PlaceOrderScreen = ({history}) => {
     const orderCreate = useSelector((state) => state.orderCreate)
     const {order, success, error} = orderCreate
 
-    useEffect(() => {
-        if(success){
-         history.push(`/order/${order._id}`)
-        }
-    }, [history, success, order._id])
-
     const placeOrderHandler = (e) => {
         dispatch(createOrder({
             orderItems: cart.cartItems,
@@ -43,6 +37,12 @@ const PlaceOrderScreen = ({history}) => {
             totalPrice: cart.totalPrice
         })) 
     }
+
+    useEffect(() => {
+        if(success){
+         history.push(`/order/${order._id}`)
+        }
+    }, [history, success])
 
     return (
         <>
