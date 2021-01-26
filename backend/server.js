@@ -3,6 +3,7 @@ const express = require('express')
 const dotenv = require('dotenv')
 const connectDB = require('./config/db')
 const colors = require('colors')
+const morgan = require('morgan')
 const productRoutes = require('./routes/productRoutes')
 const userRoutes = require('./routes/userRoutes')
 const orderRoutes = require('./routes/orderRoutes')
@@ -16,7 +17,7 @@ const app = express();
 const PORT = process.env.PORT || 5000
 
 app.use(express.json())
-
+app.use(morgan('dev'))
 
 app.get('/', (req, res) => {res.send('APP is running')})
 
