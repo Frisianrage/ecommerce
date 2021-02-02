@@ -23,10 +23,6 @@ const OrderListScreen = ({history}) => {
         }
     }, [dispatch, history, userInfo])
 
-    const deleteHandler = (order) => {
-        console.log(order)
-    }
-
     return (
         <>
             <h1>Orders</h1>
@@ -62,11 +58,13 @@ const OrderListScreen = ({history}) => {
                                 ) : (
                                     <i className='fas fa-times' style={{color: 'red'}} />
                                 )}</td>
-                                <LinkContainer to={`/order/${order._id}`}>
-                                        <Button variant='light' className='btn-sm'>
-                                            Details
-                                        </Button>
+                                <td>
+                                    <LinkContainer to={`/order/${order._id}`}>
+                                            <Button variant='light' className='btn-sm'>
+                                                Details
+                                            </Button>
                                     </LinkContainer>
+                                </td> 
                             </tr>
                         ))}
                     </tbody>
