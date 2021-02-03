@@ -1,7 +1,7 @@
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import HomeScreen from './screens/HomeScreen'
+import HomeScreen from './screens/HomeScreen.js'
 import ProductScreen from './screens/Productscreen'
 import CartScreen from './screens/CartScreen'
 import LoginScreen from './screens/LoginScreen'
