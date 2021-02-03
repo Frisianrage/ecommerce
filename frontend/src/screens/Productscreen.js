@@ -5,6 +5,7 @@ import {Form, Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap'
 import Rating from '../components/Rating'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
+import Meta from '../components/Meta'
 import {listProductDetails, createProductReview} from '../actions/productActions'
 import {PRODUCT_CREATE_REVIEW_RESET} from '../constants/productConstants'
 
@@ -48,6 +49,7 @@ const Productscreen = ({history, match}) => {
         <Link className='btn btn-dark my3' to='/'>Go Back</Link>
         {loading ? <Loader /> : error ? (<Message varaint='danger'>{error}</Message>) : (
             <>
+            <Meta title={product.name} />
             <Row>
             <Col md={6}>
                 <Image src={product.image} alt={product.name} fluid/>

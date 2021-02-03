@@ -14,8 +14,6 @@ const ProductCarousel = () => {
 
     useEffect(() => {
         dispatch(listTopProducts())
-        console.log(products)
-        console.log(error)
     }, [dispatch])
 
     return loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
@@ -33,9 +31,5 @@ const ProductCarousel = () => {
         </Carousel>
     )
 }
-
-/*
- 
-*/
 
 export default ProductCarousel
