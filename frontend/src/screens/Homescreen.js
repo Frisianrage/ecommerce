@@ -10,7 +10,7 @@ import ProductCarousel from '../components/ProductCarousel'
 import Meta from '../components/Meta'
 import {listProducts} from '../actions/productActions'
 
-const Homescreen = ({match}) => {
+const HomeScreen = ({match}) => {
     const keyword = match.params.keyword
 
     const pageNumber = match.params.pageNumber || 1
@@ -49,4 +49,4 @@ const Homescreen = ({match}) => {
     )
 }
 
-export default Homescreen
+export default HomeScreen
