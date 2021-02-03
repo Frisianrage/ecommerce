@@ -17,8 +17,8 @@
     "url": "git+https://github.com/Frisianrage/ecommerce.git"
   },
   "engines": {
-    "node": ">=10.0.0",
-    "npm": ">=6.0.0"
+    "node": "12.18.2",
+    "npm": "6.14.5"
   },
   "author": "André Zorn",
   "license": "ISC",
